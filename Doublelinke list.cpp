@@ -220,19 +220,74 @@ void Node::delete_first_node()
 
 
 
-int main()//This is the main function from where function begin 
+int main()//This is the main function from where function begin
 {
 
     Node n;
-    n.insert_at_first(11);
-    n.insert_at_last(12);
-    n.insert_at_last(13);
-    n.insert_at_last(14);
-    n.insert_at_last(15);
-    n.insert_after_given_node(12,11);
-    n.print();
-    cout<<"\n";
-    n.insert_before_given_node(9,15);
-    n.print();
+    char ch;
+    do{
+            cout<<" 1 :Insert node at first node\n";
+            cout<<" 2 :Insert node at last node\n";
+            cout<<" 3 :Insert node after given node\n";
+            cout<<" 4 :Insert node before given node\n";
+            cout<<" 5 :Delete first node\n";
+            cout<<" 6 :Delete last node\n";
+            cout<<" 7 :Delete node after given node\n";
+            cout<<" 8 :Delete node before given node\n";
+            cout<<" 9 :view your data\n";
+            cout<<"Enter your choice\n";
+            int choice;
+            cin>>choice;
+            switch(choice)
+            {
+            case 1:
+                cout<<"Enter the data you want to store\n";
+                int x;
+                cin>>x;
+                n.insert_at_first(x);
+                break;
+            case 2:
+                cout<<"Enter the data you want to store\n";
+                cin>>x;
+                n.insert_at_last(x);
+                break;
+            case 3:
+                cout<<"Enter the data you want to store\n";
+                int y;
+                cin>>x>>y;
+                n.insert_after_given_node(x,y);
+                break;
+            case 4:
+                cout<<"Enter the data you want to store\n";
+                cin>>x>>y;
+                n.insert_before_given_node(x,y);
+                break;
+            case 5:
+                n.delete_first_node();
+                break;
+            case 6:
+                n.delete_last_node();
+                break;
+            case 7:
+                cout<<"Enter the node after which you want to delete\n";
+                cin>>x;
+                n.delete_node_after_given_node(x);
+                break;
+            case 8:
+                cout<<"Enter the node before which you want to delete\n";
+                break;
+            case 9:
+                n.print();
+                break;
+
+            }
+
+            cout<<"Enter y for continue and N for exit\n";
+            cin>>ch;
+
+
+    }while(ch=='y');
+
+
 
 }
