@@ -15,6 +15,10 @@ public:
     void print();
     void insert_after_given_node(int x,int y);//Function for insert data after given node
     void insert_before_given_node(int x,int y);//Function for insert data before given node
+    void delete_last_node();
+    void delete_first_node();
+    void delete_node_after_given_node(int x);
+    void delete_node_before_given_node(int x);
 
 };
 Node *Head=NULL;
@@ -108,6 +112,109 @@ void Node::insert_before_given_node(int x,int y)
 
 
 }
+
+void Node::delete_node_before_given_node(int x)
+{   Node *ptr=Head;
+    if(Head==NULL)
+    {
+        cout<<"Under flow\n";
+    }
+    else{
+        while(ptr->Data!=x)
+        {
+            ptr=ptr->Next;
+        }
+        if (ptr->prev==NULL)
+        {
+            cout<<"No Node is available before This Node\n";
+        }
+        else if(ptr->prev->prev==NULL)
+        {
+            Head=ptr;
+            ptr->prev=NULL;
+        }
+        else{
+
+
+            ptr->prev->prev->Next=ptr;
+            ptr->prev=ptr->prev->prev;
+        }
+
+
+    }
+
+
+}
+
+
+
+void Node::delete_node_after_given_node(int x)
+{
+    Node *ptr=Head;
+    if(Head==NULL)
+    {
+        cout<<"Under flow\n";
+    }
+    else {
+        while(ptr->Data!=x)
+        {
+            ptr=ptr->Next;
+        }
+        if(ptr->Next->Next==NULL)
+        {
+            ptr->Next=NULL;
+        }
+        else{
+        ptr->Next=ptr->Next->Next;
+        ptr->Next->prev=ptr;
+        }
+    }
+
+
+}
+
+
+void Node::delete_last_node()
+{
+Node*ptr=Head;
+if(Head==NULL)
+{
+    cout<<"under flow\n";
+}
+else if(Head->Next==NULL)
+{
+    Head=NULL;
+}
+else{
+
+    while(ptr->Next!=NULL)
+    {
+        ptr=ptr->Next;
+    }
+    ptr->prev->Next=NULL;
+}
+
+
+}
+void Node::delete_first_node()
+{
+    if(Head==NULL)
+    {
+        cout<<"Under Flow\n";
+
+    }
+    else if(Head->Next==NULL)
+    {
+        Head=NULL;
+    }
+    else{
+
+        Head->Next->prev=NULL;
+        Head=Head->Next;
+    }
+}
+
+
 
 
 
